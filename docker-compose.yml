@@ -15,6 +15,18 @@ services:
     networks:
       - proxy-network
 
+  redis-session:
+    image: redis:alpine
+    container_name: port_redis_session
+    command: redis-server --appendonly yes
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis-data:/data
+    restart: always
+    networks:
+      - proxy-network
+
 networks:
   proxy-network:
     name: proxy-network
