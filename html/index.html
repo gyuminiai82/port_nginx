@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nginx HTTPS 설정 완료</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            background-color: #1e1e1e;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            border-top: 4px solid #009688;
+        }
+        h1 {
+            color: #009688;
+            margin-top: 0;
+        }
+        p {
+            font-size: 1.1em;
+            color: #b0b0b0;
+        }
+        .ssl-badge {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Nginx 서버가 실행 중입니다</h1>
+        <p>Docker 환경에서 Nginx와 SSL 설정이 성공적으로 구성되었습니다.</p>
+        <div class="ssl-badge">🔒 HTTPS 보안 연결 적용됨</div>
+    </div>
+</body>
+</html>

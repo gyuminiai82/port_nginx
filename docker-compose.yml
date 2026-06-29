@@ -1,0 +1,21 @@
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: port_nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./ssl:/etc/nginx/ssl:ro
+      - ./html:/usr/share/nginx/html:ro
+      - ./logs:/var/log/nginx
+    restart: always
+    networks:
+      - proxy-network
+
+networks:
+  proxy-network:
+    name: proxy-network
+    driver: bridge
