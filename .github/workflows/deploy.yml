@@ -1,0 +1,44 @@
+name: Deploy to Live Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: 22
+          script: |
+            echo "Starting Deployment..."
+            
+            # Ensure the target directory exists
+            mkdir -p /home/${{ secrets.SERVER_USER }}/port_nginx
+            cd /home/${{ secrets.SERVER_USER }}/port_nginx
+            
+            # Since this is an initial clone or update, we check if git is initialized
+            if [ ! -d ".git" ]; then
+              echo "Initializing Git repository..."
+              git clone https://github.com/${{ github.repository }}.git .
+            else
+              echo "Pulling latest code from main branch..."
+              git fetch origin main
+              git reset --hard origin/main
+            fi
+            
+            # Start/Update Docker containers
+            echo "Restarting Docker containers..."
+            docker-compose up -d --build
+            
+            echo "Deployment Completed!"
