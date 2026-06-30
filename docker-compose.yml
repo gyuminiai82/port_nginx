@@ -27,6 +27,22 @@ services:
     networks:
       - proxy-network
 
+  postgres-db:
+    image: postgres:15-alpine
+    container_name: port_postgres_db
+    environment:
+      POSTGRES_DB: portfolio
+      POSTGRES_USER: gyumin
+      POSTGRES_PASSWORD: "03040228"
+      TZ: Asia/Seoul
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - proxy-network
+
 networks:
   proxy-network:
     name: proxy-network
