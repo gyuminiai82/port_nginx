@@ -19,7 +19,7 @@ services:
   redis-session:
     image: redis:alpine
     container_name: port_redis_session
-    command: redis-server --appendonly yes
+    command: redis-server --appendonly yes --requirepass "03040228"
     ports:
       - "6379:6379"
     volumes:
