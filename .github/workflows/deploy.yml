@@ -41,9 +41,9 @@ jobs:
             echo "Restarting Docker containers..."
             docker compose up -d --build
             
-            # Pull Qwen 2.5 (3B) model into Ollama
-            echo "Pulling Qwen 2.5 (3B) model..."
-            docker exec port_ollama ollama pull qwen2.5:3b
+            # Pull Qwen 2.5 VL (3B) model into Ollama
+            echo "Pulling Qwen 2.5 VL (3B) model..."
+            docker exec port_ollama ollama pull qwen2.5-vl:3b
             
             # Request SSL Certificate using Certbot (only if it doesn't exist)
             echo "Requesting SSL Certificate..."
