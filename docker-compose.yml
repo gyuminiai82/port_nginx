@@ -65,6 +65,13 @@ services:
     restart: always
     networks:
       - proxy-network
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
 
 networks:
   proxy-network:
