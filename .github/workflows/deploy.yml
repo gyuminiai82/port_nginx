@@ -41,6 +41,10 @@ jobs:
             echo "Restarting Docker containers..."
             docker compose up -d --build
             
+            # Pull Llama 3.1 model into Ollama
+            echo "Pulling Llama 3.1 model..."
+            docker exec port_ollama ollama pull llama3.1
+            
             # Request SSL Certificate using Certbot (only if it doesn't exist)
             echo "Requesting SSL Certificate..."
             docker exec port_certbot certbot certonly --webroot --webroot-path /var/www/certbot/ -d auth.minstudio.app -m blackksj@naver.com --agree-tos --no-eff-email --keep-until-expiring
