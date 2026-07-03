@@ -13,6 +13,8 @@ services:
       - ./html:/usr/share/nginx/html:ro
       - ./logs:/var/log/nginx
     restart: always
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     networks:
       - proxy-network
 
