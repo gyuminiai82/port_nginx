@@ -48,10 +48,12 @@ jobs:
             # Request SSL Certificate using Certbot (only if it doesn't exist)
             echo "Requesting SSL Certificate..."
             docker exec port_certbot certbot certonly --webroot --webroot-path /var/www/certbot/ -d auth.minstudio.app -m blackksj@naver.com --agree-tos --no-eff-email --keep-until-expiring
+            docker exec port_certbot certbot certonly --webroot --webroot-path /var/www/certbot/ -d shop.minstudio.app -m blackksj@naver.com --agree-tos --no-eff-email --keep-until-expiring
             
             # Apply HTTPS configuration
             echo "Applying HTTPS configuration..."
             cp nginx/conf.d/auth.minstudio.app.https.conf nginx/conf.d/auth.minstudio.app.conf
+            cp nginx/conf.d/shop.minstudio.app.https.conf nginx/conf.d/shop.minstudio.app.conf
             
             # Reload Nginx to apply new certificates and HTTPS block
             docker exec port_nginx nginx -s reload

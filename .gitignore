@@ -2,3 +2,5 @@ redis-data/
 postgres-data/
 certbot/www/
 docker-compose.override.yml
+ollama-data/
+logs/
