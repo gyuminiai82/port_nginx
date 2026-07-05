@@ -68,6 +68,21 @@ services:
     networks:
       - proxy-network
 
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: port_open_webui
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+    ports:
+      - "3000:8080"
+    volumes:
+      - ./open-webui-data:/app/backend/data
+    restart: always
+    networks:
+      - proxy-network
+    depends_on:
+      - ollama
+
   chromadb:
     image: chromadb/chroma:latest
     container_name: port_chromadb
