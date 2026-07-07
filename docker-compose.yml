@@ -114,7 +114,7 @@ services:
       - proxy-network
 
   port_kafka:
-    image: bitnami/kafka:latest
+    image: bitnamilegacy/kafka:latest
     container_name: port_kafka
     environment:
       - KAFKA_CFG_NODE_ID=0
