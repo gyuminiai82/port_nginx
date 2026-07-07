@@ -177,7 +177,7 @@ networks:
     name: proxy-network
     driver: bridge
 
-volumes:
+# volumes:
 #   nodered_data:
 #   kafka_data:
 #   grafana_data:
