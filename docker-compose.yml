@@ -100,9 +100,8 @@ services:
   port_node_red:
     image: nodered/node-red:latest
     container_name: port_node_red
-    user: "root"
     volumes:
-      - ./nodered-data:/data
+      - nodered_data:/data
     restart: always
     networks:
       - proxy-network
@@ -117,7 +116,6 @@ services:
   port_kafka:
     image: bitnami/kafka:latest
     container_name: port_kafka
-    user: "root"
     environment:
       - KAFKA_CFG_NODE_ID=0
       - KAFKA_CFG_PROCESS_ROLES=controller,broker
@@ -127,7 +125,7 @@ services:
       - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
       - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://port_kafka:9092
     volumes:
-      - ./kafka-data:/bitnami/kafka
+      - kafka_data:/bitnami/kafka
     restart: always
     networks:
       - proxy-network
@@ -170,9 +168,8 @@ services:
   port_grafana:
     image: grafana/grafana:latest
     container_name: port_grafana
-    user: "root"
     volumes:
-      - ./grafana-data:/var/lib/grafana
+      - grafana_data:/var/lib/grafana
     restart: always
     networks:
       - proxy-network
@@ -181,3 +178,8 @@ networks:
   proxy-network:
     name: proxy-network
     driver: bridge
+
+volumes:
+  nodered_data:
+  kafka_data:
+  grafana_data:

@@ -21,6 +21,7 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 22
           script: |
+            set -e
             echo "Starting Deployment..."
             
             # Ensure the target directory exists
