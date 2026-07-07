@@ -31,9 +31,7 @@ services:
       - proxy-network
 
   postgres-db:
-    build: 
-      context: ./postgres
-      dockerfile: Dockerfile
+    image: timescale/timescaledb-ha:pg15
     container_name: port_postgres_db
     environment:
       POSTGRES_DB: portfolio
