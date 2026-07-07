@@ -50,12 +50,18 @@ jobs:
             docker exec port_certbot certbot certonly --webroot --webroot-path /var/www/certbot/ -d auth.minstudio.app -m blackksj@naver.com --agree-tos --no-eff-email --keep-until-expiring
             docker exec port_certbot certbot certonly --webroot --webroot-path /var/www/certbot/ -d shop.minstudio.app -m blackksj@naver.com --agree-tos --no-eff-email --keep-until-expiring
             docker exec port_certbot certbot certonly --webroot --webroot-path /var/www/certbot/ -d chatbot.minstudio.app -m blackksj@naver.com --agree-tos --no-eff-email --keep-until-expiring
+            docker exec port_certbot certbot certonly --webroot --webroot-path /var/www/certbot/ -d nodered.minstudio.app -m blackksj@naver.com --agree-tos --no-eff-email --keep-until-expiring
+            docker exec port_certbot certbot certonly --webroot --webroot-path /var/www/certbot/ -d emqx.minstudio.app -m blackksj@naver.com --agree-tos --no-eff-email --keep-until-expiring
+            docker exec port_certbot certbot certonly --webroot --webroot-path /var/www/certbot/ -d grafana.minstudio.app -m blackksj@naver.com --agree-tos --no-eff-email --keep-until-expiring
             
             # Apply HTTPS configuration
             echo "Applying HTTPS configuration..."
             cp nginx/conf.d/auth.minstudio.app.https.conf nginx/conf.d/auth.minstudio.app.conf
             cp nginx/conf.d/shop.minstudio.app.https.conf nginx/conf.d/shop.minstudio.app.conf
             cp nginx/conf.d/chatbot.minstudio.app.https.conf nginx/conf.d/chatbot.minstudio.app.conf
+            cp nginx/conf.d/nodered.minstudio.app.https.conf nginx/conf.d/nodered.minstudio.app.conf
+            cp nginx/conf.d/emqx.minstudio.app.https.conf nginx/conf.d/emqx.minstudio.app.conf
+            cp nginx/conf.d/grafana.minstudio.app.https.conf nginx/conf.d/grafana.minstudio.app.conf
             
             # Reload Nginx to apply new certificates and HTTPS block
             docker exec port_nginx nginx -s reload
