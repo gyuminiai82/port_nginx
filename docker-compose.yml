@@ -1,4 +1,4 @@
-﻿services:
+services:
   nginx:
     image: nginx:alpine
     container_name: port_nginx
@@ -166,6 +166,9 @@
   port_grafana:
     image: grafana/grafana:latest
     container_name: port_grafana
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
     volumes:
       - grafana_data:/var/lib/grafana
     restart: always
