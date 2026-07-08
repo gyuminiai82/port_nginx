@@ -41,7 +41,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/home/postgres/pgdata/data
+      - ./postgres-data:/home/postgres/pgdata/data
       - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
     restart: always
     networks:
@@ -184,4 +184,3 @@ volumes:
   nodered_data:
   kafka_data:
   grafana_data:
-  postgres_data:
