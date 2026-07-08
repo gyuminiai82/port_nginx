@@ -42,6 +42,12 @@ jobs:
             echo "Restarting Docker containers..."
             docker compose up -d --build
             
+            echo "Waiting for postgres to initialize..."
+            sleep 10
+            docker exec port_postgres_db psql -U gyumin -d portfolio -c "CREATE DATABASE \"PORT_AUTH\";" || true
+            docker exec port_postgres_db psql -U gyumin -d portfolio -c "CREATE DATABASE \"PORT_SHOP\";" || true
+            docker exec port_postgres_db psql -U gyumin -d portfolio -c "ALTER USER gyumin WITH PASSWORD '03040228';" || true
+            
             # Pull Qwen 2.5 VL (3B) model into Ollama
             echo "Pulling Qwen 2.5 VL (3B) model..."
             docker exec port_ollama ollama pull qwen2.5vl:3b
