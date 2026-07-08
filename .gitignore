@@ -4,3 +4,8 @@ certbot/www/
 docker-compose.override.yml
 ollama-data/
 logs/
+open-webui-data/
+chroma-data/
+nodered_data/
+kafka_data/
+grafana_data/
