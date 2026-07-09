@@ -38,6 +38,7 @@ services:
       POSTGRES_USER: gyumin
       POSTGRES_PASSWORD: "03040228"
       TZ: Asia/Seoul
+      PGDATA: /home/postgres/pgdata/data/pgdata
     ports:
       - "5432:5432"
     volumes:
