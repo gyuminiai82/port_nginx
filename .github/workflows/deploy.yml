@@ -49,10 +49,10 @@ jobs:
             docker exec port_postgres_db psql -U gyumin -d portfolio -c "ALTER USER gyumin WITH PASSWORD '03040228';" || true
             
             # Temporary: Reset sensor_data table and restart data pipelines
-            echo "Resetting sensor_data table and restarting pipelines..."
-            docker exec port_postgres_db psql -U gyumin -d portfolio -c "DROP TABLE IF EXISTS sensor_data CASCADE;" || true
-            docker exec -i port_postgres_db psql -U gyumin -d portfolio < ./postgres/init.sql || true
-            docker restart port_mqtt_to_kafka port_kafka_to_postgres || true
+            # echo "Resetting sensor_data table and restarting pipelines..."
+            # docker exec port_postgres_db psql -U gyumin -d portfolio -c "DROP TABLE IF EXISTS sensor_data CASCADE;" || true
+            # docker exec -i port_postgres_db psql -U gyumin -d portfolio < ./postgres/init.sql || true
+            # docker restart port_mqtt_to_kafka port_kafka_to_postgres || true
             
             # Pull Qwen 2.5 VL (3B) model into Ollama
             echo "Pulling Qwen 2.5 VL (3B) model..."
